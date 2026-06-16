@@ -5,6 +5,9 @@ import PortableText from '@/app/components/PortableText'
 import Image from '@/app/components/SanityImage'
 import {stegaClean} from '@sanity/client/stega'
 import {ExtractPageBuilderType} from '@/sanity/lib/types'
+import ThemeWrapper from './ThemeWrapper'
+import {Text} from './Text'
+import Grid from './Grid'
 
 type CtaProps = {
   block: ExtractPageBuilderType<'callToAction'>
@@ -17,27 +20,28 @@ type CtaProps = {
 export default function CTA({block}: CtaProps) {
   const {heading, eyebrow, body = [], button, image, theme, contentAlignment} = block
 
-  const isDark = theme === 'dark'
   const isImageFirst = stegaClean(contentAlignment) === 'imageFirst'
 
   return (
-    <section className={isDark ? 'relative dark dark:bg-black' : 'relative dark:bg-black'}>
-      <div className="absolute inset-0 bg-size-[5px] bg-[url(/images/tile-1-black.png)] dark:bg-[url(/images/tile-1-white.png)] opacity-25" />
-      <div className="container relative">
-        <div className="grid lg:grid-cols-2 gap-12 py-12">
+    <ThemeWrapper theme={theme?.name || 'theme-white'}>
+      <div className="relative">
+        <div className="surface-l0 absolute inset-0 bg-size-[5px] bg-[url(/images/tile-1-black.png)] dark:bg-[url(/images/tile-1-white.png)] opacity-50" />
+        <Grid className="relative py-margin-section-md">
           <div
-            className={`${isImageFirst && image ? 'row-start-2 lg:row-start-1 lg:col-start-2' : ''} flex flex-col gap-2 `}
+            className={`${isImageFirst && image ? 'col-span-4 md:col-span-6 md:col-start-6' : 'col-span-4 md:col-span-6 md:col-start-1'} flex flex-col justify-center gap-2 `}
           >
             {eyebrow && (
-              <span className="text-sm uppercase dark:text-white font-mono tracking-tight opacity-70">
+              <Text type="caption1" className="text-secondary">
                 {eyebrow}
-              </span>
+              </Text>
             )}
             {heading && (
-              <h2 className="text-2xl md:text-3xl lg:text-4xl dark:text-white">{heading}</h2>
+              <Text type="display2" className="text-primary">
+                {heading}
+              </Text>
             )}
             {body && (
-              <div className="lg:text-left">
+              <div className="lg:text-left text-primary">
                 <PortableText value={body as PortableTextBlock[]} className="dark:prose-invert" />
               </div>
             )}
@@ -53,19 +57,20 @@ export default function CTA({block}: CtaProps) {
               </div>
             )}
           </div>
-
-          {image?.asset?._ref && (
-            <Image
-              id={image.asset._ref}
-              alt="Demo image"
-              width={704}
-              crop={image.crop}
-              mode="cover"
-              className="rounded-sm"
-            />
-          )}
-        </div>
+          <div className="col-span-4 md:col-span-6 md:col-start-7">
+            {image?.asset?._ref && (
+              <Image
+                id={image.asset._ref}
+                alt="Demo image"
+                width={704}
+                crop={image.crop}
+                mode="cover"
+                className="rounded-sm"
+              />
+            )}
+          </div>
+        </Grid>
       </div>
-    </section>
+    </ThemeWrapper>
   )
 }

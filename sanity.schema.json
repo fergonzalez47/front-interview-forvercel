@@ -590,17 +590,8 @@
         "theme": {
           "type": "objectAttribute",
           "value": {
-            "type": "union",
-            "of": [
-              {
-                "type": "string",
-                "value": "light"
-              },
-              {
-                "type": "string",
-                "value": "dark"
-              }
-            ]
+            "type": "inline",
+            "name": "theme"
           },
           "optional": true
         },
@@ -636,6 +627,14 @@
             "type": "string",
             "value": "infoSection"
           }
+        },
+        "theme": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "inline",
+            "name": "theme"
+          },
+          "optional": true
         },
         "heading": {
           "type": "objectAttribute",

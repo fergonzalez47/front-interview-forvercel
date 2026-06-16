@@ -103,12 +103,13 @@ export type CallToAction = {
     crop?: SanityImageCrop
     _type: 'image'
   }
-  theme?: 'light' | 'dark'
+  theme?: Theme
   contentAlignment?: 'textFirst' | 'imageFirst'
 }
 
 export type InfoSection = {
   _type: 'infoSection'
+  theme?: Theme
   heading?: string
   subheading?: string
   content?: BlockContent

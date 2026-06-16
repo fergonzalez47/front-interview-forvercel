@@ -2,6 +2,9 @@ import {type PortableTextBlock} from 'next-sanity'
 
 import PortableText from '@/app/components/PortableText'
 import {InfoSection} from '@/sanity.types'
+import {TextCombination} from '@/app/components/TextCombination'
+import Grid from './Grid'
+import ThemeWrapper from './ThemeWrapper'
 
 type InfoProps = {
   block: InfoSection
@@ -11,22 +14,27 @@ type InfoProps = {
   pageType: string
 }
 
-export default function CTA({block}: InfoProps) {
+export default function InfoComponent({block}: InfoProps) {
   return (
-    <div className="container my-12">
-      <div className="max-w-3xl">
-        {block?.heading && <h2 className="text-2xl md:text-3xl lg:text-4xl">{block.heading}</h2>}
-        {block?.subheading && (
-          <span className="block mt-4 mb-8 text-lg uppercase font-light text-gray-900/70">
-            {block.subheading}
-          </span>
-        )}
-        <div className="mt-4">
-          {block?.content?.length && (
-            <PortableText className="" value={block.content as PortableTextBlock[]} />
-          )}
-        </div>
+    <ThemeWrapper theme={block.theme?.name || 'theme-white'}>
+      <div className="surface-l0 -mt-header-height-mobile md:-mt-header-height-desktop pt-header-height-mobile md:pt-header-height-desktop relative">
+        <Grid className=" py-margin-section-md relative z-10">
+          <div className="col-span-4 md:col-span-6 md:col-start-4">
+            <TextCombination
+              type="d1p1"
+              align="center"
+              headingLevel="h1"
+              title={block.heading || ''}
+              description={block.subheading as string}
+            />
+            <div className="mt-4 text-primary">
+              {block?.content?.length && (
+                <PortableText className="" value={block.content as PortableTextBlock[]} />
+              )}
+            </div>
+          </div>
+        </Grid>
       </div>
-    </div>
+    </ThemeWrapper>
   )
 }

@@ -8,6 +8,11 @@ export const infoSection = defineType({
   icon: TextIcon,
   fields: [
     defineField({
+      name: 'theme',
+      title: 'Theme',
+      type: 'theme',
+    }),
+    defineField({
       name: 'heading',
       title: 'Heading',
       type: 'string',

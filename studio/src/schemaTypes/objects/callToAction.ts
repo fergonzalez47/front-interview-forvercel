@@ -70,17 +70,8 @@ export const callToAction = defineType({
     }),
     defineField({
       name: 'theme',
-      type: 'string',
+      type: 'theme',
       title: 'Theme',
-      options: {
-        list: [
-          {title: 'Light', value: 'light'},
-          {title: 'Dark', value: 'dark'},
-        ],
-        layout: 'radio',
-      },
-      description: 'Use dark theme with white tile grid background',
-      initialValue: 'light',
       group: 'designSystem',
     }),
     defineField({
