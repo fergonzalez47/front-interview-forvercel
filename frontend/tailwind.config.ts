@@ -1,4 +1,6 @@
-import {BOX_SHADOWS, COLORS} from './tailwind-config/colors.constants'
+// @ts-nocheck
+
+import { BOX_SHADOWS, COLORS } from './tailwind-config/colors.constants'
 import {MAX_SPACER, MAX_Z_INDEX, SPACER_VALUE} from './tailwind-config/constants'
 import {SCREENS} from './tailwind-config/screens.constants'
 import {

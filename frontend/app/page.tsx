@@ -9,6 +9,13 @@ export default async function Page() {
     query: settingsQuery,
   })
 
+  //used to list all pages with links to them in the homepage, to facilitate navigation and testing.
+  //remember: import {allPagesQuery} from '@/sanity/lib/queries'
+
+  // const {data: pages} = await sanityFetch({
+  //   query: allPagesQuery,
+  // })
+
   return (
     <>
       <div className="relative">
@@ -47,6 +54,19 @@ export default async function Page() {
                   </svg>
                 </Link>
               </div>
+
+              {/* ONLY FOR TESTING */}
+              {/* Temporary inline type used to avoid an implicit 'any' warning while keeping // the
+              implementation simple. The query is already defined and can be fully // typed later
+              using generated Sanity types if needed. */}
+
+              {/* {pages?.map((page: {_id: string; name: string; slug: string}) => (
+                <li key={page._id}>
+                  <Link href={`/${page.slug}`} className="text-blue-600 underline">
+                    {page.name}
+                  </Link>
+                </li>
+              ))} */}
             </div>
           </div>
         </div>

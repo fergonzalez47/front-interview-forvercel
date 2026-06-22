@@ -1,6 +1,6 @@
 import { ThemeNameType } from "@/tailwind-config/theme.constants";
 import { FC } from "react";
-import { uuid } from "@sanity/uuid";
+// import { uuid } from "@sanity/uuid";
 
 export type ThemeWrapperProps = {
   theme: ThemeNameType;
@@ -9,11 +9,13 @@ export type ThemeWrapperProps = {
 
 const ThemeWrapper: FC<ThemeWrapperProps> = ({ theme, children }) => {
   // const wrapperProps = { 'data-theme': theme };
-  const myUUID = crypto.randomUUID();
+  // const myUUID = crypto.randomUUID();
 
-  return <div data-theme={myUUID} className={theme}>
-    {children}
-  </div>;
+  return (
+    <div data-theme={theme} className={theme}>
+      {children}
+    </div>
+  )
 };
 
 export default ThemeWrapper;

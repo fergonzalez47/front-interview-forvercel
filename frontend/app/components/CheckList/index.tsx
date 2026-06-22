@@ -31,7 +31,7 @@ const CheckList = ({ items }: CheckListProps) => {
       <div key={item.id} className="flex items-center gap-s">
         <CheckMarkLight className="hidden visible-light-theme-only" />
         <CheckMarkDarkViolet className="hidden visible-dark-theme-only" />
-        <Text type="p2" className="text-primary">{item}</Text>
+        <Text type="p2" className="text-primary">{item.text}</Text>
       </div>
     ))}
   </div>

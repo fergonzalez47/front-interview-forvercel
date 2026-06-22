@@ -3,7 +3,7 @@ import Grid from '@/app/components/Grid';
 import { Text } from '@/app/components/Text';
 import { FC } from 'react';
 import { G2Logo } from './G2Logo';
-import { MobileLogoCarousel } from './MobileLogoCarousel';
+// import { MobileLogoCarousel } from './MobileLogoCarousel';
 
 export type LogoStripProps = {
   type: 'text' | 'g2';
@@ -33,7 +33,7 @@ const LogoStrip: FC<LogoStripProps> = ({ type = 'text', logos = [] }) => {
         ))}
       </div>
       <div className="relative flex col-span-4 md:hidden">
-        <MobileLogoCarousel logos={logos} />
+        {/* <MobileLogoCarousel logos={logos} /> */}
         <div
           className="absolute top-0 bottom-0 left-0 h-full w-8 surface-l0 pointer-events-none"
           style={{

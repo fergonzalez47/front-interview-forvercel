@@ -2,7 +2,9 @@ import {person} from './documents/person'
 import {page} from './documents/page'
 import {post} from './documents/post'
 import {callToAction} from './objects/callToAction'
-import {infoSection} from './objects/infoSection'
+import { infoSection } from './objects/infoSection'
+
+import { centeredHero } from './objects/centeredHero'
 import {settings} from './singletons/settings'
 import {link} from './objects/link'
 import {blockContent} from './objects/blockContent'
@@ -30,6 +32,8 @@ export const schemaTypes = [
   blockContentTextOnly,
   infoSection,
   callToAction,
+  //hero
+  centeredHero,
   link,
   theme,
   textCombination,

@@ -26,7 +26,8 @@ const linkFields = /* groq */ `
       ${linkReference}
       }
 `
-
+// Dedicated clause kept for consistency with other page builder blocks
+// and to simplify future extensions ( I refer to centeredHero)
 export const getPageQuery = defineQuery(`
   *[_type == 'page' && slug.current == $slug][0]{
     _id,
@@ -53,6 +54,9 @@ export const getPageQuery = defineQuery(`
           }
         }
       },
+      _type == "centeredHero" => {
+        ...
+      }
     },
   }
 `)
@@ -98,4 +102,14 @@ export const postPagesSlugs = defineQuery(`
 export const pagesSlugs = defineQuery(`
   *[_type == "page" && defined(slug.current)]
   {"slug": slug.current}
+`)
+
+// my query to get all pages with slugs, ids and names, to be used in the sitemap and for internal linking in the homepage
+
+export const allPagesQuery = defineQuery(`
+  *[_type == "page" && defined(slug.current)]{
+    _id,
+    name,
+    "slug": slug.current
+  }
 `)

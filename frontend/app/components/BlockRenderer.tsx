@@ -2,6 +2,7 @@ import React from 'react'
 
 import Cta from '@/app/components/Cta'
 import Info from '@/app/components/InfoSection'
+import Hero from '@/app/components/HeroSection'
 import {dataAttr} from '@/sanity/lib/utils'
 import {PageBuilderSection} from '@/sanity/lib/types'
 
@@ -16,9 +17,11 @@ type BlocksType = {
   [key: string]: React.FC<BlockProps>
 }
 
+// Maps Sanity page builder block types to their corresponding React components.
 const Blocks = {
   callToAction: Cta,
   infoSection: Info,
+  centeredHero: Hero,
 } as unknown as BlocksType
 
 /**

@@ -14,6 +14,7 @@ export const page = defineType({
   fields: [
     defineField({
       name: 'name',
+      description: 'A name for this page',
       title: 'Name',
       type: 'string',
       validation: (Rule) => Rule.required(),
@@ -23,6 +24,7 @@ export const page = defineType({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
+      description: 'The slug is the URL path for this page. It should be unique and descriptive.',
       validation: (Rule) => Rule.required(),
       options: {
         source: 'name',
@@ -44,7 +46,9 @@ export const page = defineType({
       name: 'pageBuilder',
       title: 'Page builder',
       type: 'array',
-      of: [{type: 'callToAction'}, {type: 'infoSection'}],
+      // Added CenteredHero as a new page builder block to allow editors
+      // to compose hero sections directly from Sanity.
+      of: [{ type: 'callToAction' }, { type: 'infoSection' }, { type: 'centeredHero' },], // 
       options: {
         insertMenu: {
           // Configure the "Add Item" menu to display a thumbnail preview of the content type. https://www.sanity.io/docs/studio/array-type#efb1fe03459d

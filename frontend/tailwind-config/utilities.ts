@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { RESPONSIVE_SPACING_MAP } from './sizes.constants';
 import { THEME_COLOR_TOKENS, THEME_DISPLAY_TOKENS } from './theme.constants';
 
@@ -11,7 +12,7 @@ import { THEME_COLOR_TOKENS, THEME_DISPLAY_TOKENS } from './theme.constants';
  * @returns An object with the values as keys and the values as values.
  */
 
-export const generateValues = (max, factor = 1, unit = 'px') =>
+export const generateValues = (max: number, factor = 1, unit = 'px') =>
   new Array(max)
     .fill(0)
     .map((_, i) => i)

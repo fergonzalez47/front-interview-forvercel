@@ -12,9 +12,7 @@
  * ---------------------------------------------------------------------------------
  */
 
-export declare const internalGroqTypeReferenceTo: unique symbol
-
-// Source: ../sanity.schema.json
+// Source: ..\sanity.schema.json
 export type ButtonPair = {
   _type: 'buttonPair'
   variant?: 'filledOutline' | 'filledTertiary'
@@ -81,6 +79,14 @@ export type Link = {
   page?: PageReference
   post?: PostReference
   openInNewTab?: boolean
+}
+
+export type CenteredHero = {
+  _type: 'centeredHero'
+  theme?: Theme
+  eyebrow?: string
+  title: string
+  description?: string
 }
 
 export type SanityImageAssetReference = {
@@ -222,6 +228,9 @@ export type Page = {
     | ({
         _key: string
       } & InfoSection)
+    | ({
+        _key: string
+      } & CenteredHero)
   >
 }
 
@@ -448,7 +457,6 @@ export type SanityImageMetadata = {
   palette?: SanityImagePalette
   lqip?: string
   blurHash?: string
-  thumbHash?: string
   hasAlpha?: boolean
   isOpaque?: boolean
 }
@@ -464,14 +472,14 @@ export type SanityFileAsset = {
   title?: string
   description?: string
   altText?: string
-  sha1hash: string
-  extension: string
-  mimeType: string
-  size: number
-  assetId: string
+  sha1hash?: string
+  extension?: string
+  mimeType?: string
+  size?: number
+  assetId?: string
   uploadId?: string
-  path: string
-  url: string
+  path?: string
+  url?: string
   source?: SanityAssetSourceData
 }
 
@@ -493,14 +501,14 @@ export type SanityImageAsset = {
   title?: string
   description?: string
   altText?: string
-  sha1hash: string
-  extension: string
-  mimeType: string
-  size: number
-  assetId: string
+  sha1hash?: string
+  extension?: string
+  mimeType?: string
+  size?: number
+  assetId?: string
   uploadId?: string
-  path: string
-  url: string
+  path?: string
+  url?: string
   metadata?: SanityImageMetadata
   source?: SanityAssetSourceData
 }
@@ -521,6 +529,7 @@ export type AllSanitySchemaTypes =
   | PageReference
   | PostReference
   | Link
+  | CenteredHero
   | SanityImageAssetReference
   | CallToAction
   | InfoSection
@@ -555,3 +564,5 @@ export type AllSanitySchemaTypes =
   | SanityAssetSourceData
   | SanityImageAsset
   | Geopoint
+
+export declare const internalGroqTypeReferenceTo: unique symbol
